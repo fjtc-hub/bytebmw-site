@@ -1,11 +1,8 @@
 :root {
   --bg: #080c11;
-  --bg-2: #0c1117;
-  --bg-3: #111821;
   --panel: rgba(255, 255, 255, 0.045);
   --panel-2: rgba(255, 255, 255, 0.06);
   --line: rgba(255, 255, 255, 0.08);
-  --line-strong: rgba(255, 255, 255, 0.14);
   --text: #eef4fb;
   --muted: #92a3b9;
   --muted-2: #66778f;
@@ -37,15 +34,7 @@ body {
   color: var(--text);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
-  background:
-    linear-gradient(27deg, #0a0e13 5px, transparent 5px) 0 5px,
-    linear-gradient(207deg, #0a0e13 5px, transparent 5px) 10px 0,
-    linear-gradient(27deg, #111821 5px, transparent 5px) 0 10px,
-    linear-gradient(207deg, #111821 5px, transparent 5px) 10px 5px,
-    linear-gradient(90deg, #0c1117 10px, transparent 10px),
-    linear-gradient(#0b1016 25%, #090d12 25%, #090d12 50%, #0b1016 50%, #0b1016 75%, #090d12 75%, #090d12);
-  background-color: #090d12;
-  background-size: 20px 20px;
+  background-color: #080c11;
 }
 
 a {
@@ -53,55 +42,56 @@ a {
   text-decoration: none;
 }
 
+/* FONDO FIBRA DE CARBONO MÁS REAL */
 .bg-layer {
   position: fixed;
   inset: 0;
   overflow: hidden;
   pointer-events: none;
+  background:
+    linear-gradient(27deg, rgba(255,255,255,0.022) 5px, transparent 5px) 0 5px,
+    linear-gradient(207deg, rgba(255,255,255,0.022) 5px, transparent 5px) 10px 0,
+    linear-gradient(27deg, rgba(255,255,255,0.012) 5px, transparent 5px) 0 10px,
+    linear-gradient(207deg, rgba(255,255,255,0.012) 5px, transparent 5px) 10px 5px,
+    linear-gradient(90deg, rgba(255,255,255,0.015) 10px, transparent 10px),
+    linear-gradient(
+      #0b1016 25%,
+      #090d12 25%,
+      #090d12 50%,
+      #0b1016 50%,
+      #0b1016 75%,
+      #090d12 75%,
+      #090d12
+    );
+  background-size: 20px 20px;
 }
 
-.glow {
-  position: absolute;
-  border-radius: 999px;
-  filter: blur(90px);
-  opacity: 0.16;
-}
-
-.glow-a {
-  top: -220px;
-  left: -120px;
-  width: 560px;
-  height: 560px;
-  background: #1d4ed8;
-}
-
-.glow-b {
-  top: 40px;
-  right: -140px;
-  width: 460px;
-  height: 460px;
-  background: #0891b2;
-}
-
-.grid-mask {
+.bg-layer::before {
+  content: "";
   position: absolute;
   inset: 0;
-  background-image:
-    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-  background-size: 34px 34px;
-  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.32), transparent 74%);
+  background:
+    radial-gradient(circle at 20% 18%, rgba(59,130,246,0.16), transparent 28%),
+    radial-gradient(circle at 82% 22%, rgba(34,211,238,0.12), transparent 24%),
+    linear-gradient(180deg, rgba(8,12,17,0.18), rgba(8,12,17,0.38));
 }
 
-.noise-mask {
+.bg-layer::after {
+  content: "";
   position: absolute;
   inset: 0;
-  opacity: 0.03;
+  opacity: 0.035;
   background-image:
     radial-gradient(circle at 20% 20%, #fff 0 1px, transparent 1px),
     radial-gradient(circle at 80% 30%, #fff 0 1px, transparent 1px),
     radial-gradient(circle at 50% 70%, #fff 0 1px, transparent 1px);
   background-size: 180px 180px;
+}
+
+.glow,
+.grid-mask,
+.noise-mask {
+  display: none;
 }
 
 .container {
@@ -115,13 +105,13 @@ a {
   top: 0;
   z-index: 30;
   border-bottom: 1px solid var(--line);
-  background: rgba(8, 12, 17, 0.8);
+  background: rgba(8, 12, 17, 0.82);
   backdrop-filter: blur(16px);
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.16);
 }
 
 .header-row {
-  min-height: 72px;
+  min-height: 74px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -133,6 +123,8 @@ a {
   align-items: center;
   gap: 12px;
   min-width: 0;
+  position: relative;
+  z-index: 2;
 }
 
 .brand-mark {
@@ -187,37 +179,40 @@ a {
   text-transform: uppercase;
 }
 
-/* FRANJAS */
+/* RAYAS DIAGONALES OCUPANDO LA ALTURA DE LA BARRA */
 .stripes {
+  position: relative;
+  height: 52px;
+  width: 180px;
+  flex: 0 0 auto;
   display: flex;
-  align-items: center;
+  align-items: stretch;
   justify-content: flex-end;
-  gap: 8px;
-  transform: skewX(-28deg);
-  opacity: 0.98;
-  flex: 1;
-  max-width: 260px;
+  gap: 10px;
+  z-index: 1;
 }
 
 .stripes span {
-  height: 9px;
-  border-radius: 4px;
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.06);
+  display: block;
+  width: 22px;
+  height: 100%;
+  border-radius: 6px;
+  transform: skewX(-26deg);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.14),
+    0 0 18px rgba(255,255,255,0.04);
 }
 
 .stripes span:nth-child(1) {
-  width: 64px;
-  background: linear-gradient(90deg, #83ddff, var(--sky));
+  background: linear-gradient(180deg, #8ae5ff 0%, var(--sky) 55%, #2aa7db 100%);
 }
 
 .stripes span:nth-child(2) {
-  width: 64px;
-  background: linear-gradient(90deg, #2b58e0, var(--navy));
+  background: linear-gradient(180deg, #406cff 0%, var(--navy) 55%, #132c83 100%);
 }
 
 .stripes span:nth-child(3) {
-  width: 64px;
-  background: linear-gradient(90deg, #f14a4a, var(--red));
+  background: linear-gradient(180deg, #ff6a6a 0%, var(--red) 55%, #991b1b 100%);
 }
 
 .main-shell {
@@ -456,7 +451,6 @@ a {
   font-size: 13px;
 }
 
-/* REVEAL */
 .reveal {
   opacity: 0;
   transform: translateY(18px);
@@ -481,13 +475,13 @@ a {
   }
 
   .stripes {
-    max-width: 210px;
+    width: 150px;
+    height: 46px;
+    gap: 8px;
   }
 
-  .stripes span:nth-child(1),
-  .stripes span:nth-child(2),
-  .stripes span:nth-child(3) {
-    width: 50px;
+  .stripes span {
+    width: 18px;
   }
 }
 
@@ -497,16 +491,12 @@ a {
   }
 
   .header-row {
-    min-height: 64px;
+    min-height: 66px;
   }
 
   .brand-mark {
     width: 40px;
     height: 40px;
-  }
-
-  .brand-core {
-    inset: 6px;
   }
 
   .hero {
@@ -546,18 +536,14 @@ a {
   }
 
   .stripes {
-    max-width: 120px;
-    gap: 5px;
+    width: 108px;
+    height: 34px;
+    gap: 6px;
   }
 
   .stripes span {
-    height: 8px;
-  }
-
-  .stripes span:nth-child(1),
-  .stripes span:nth-child(2),
-  .stripes span:nth-child(3) {
-    width: 32px;
+    width: 13px;
+    border-radius: 4px;
   }
 
   .footer-row {
