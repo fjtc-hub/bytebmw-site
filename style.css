@@ -6,10 +6,9 @@
   --text: #eef4fb;
   --muted: #92a3b9;
   --muted-2: #66778f;
-  --sky: #58cfff;
+  --cyan: #58cfff;
   --blue: #3b82f6;
-  --blue-deep: #1d4ed8;
-  --navy: #19348f;
+  --indigo: #3d5afe;
   --red: #d92c2c;
   --ok: #34d399;
   --shadow: 0 28px 90px rgba(0, 0, 0, 0.42);
@@ -42,7 +41,7 @@ a {
   text-decoration: none;
 }
 
-/* FONDO FIBRA DE CARBONO MÁS REAL */
+/* Fondo fibra de carbono */
 .bg-layer {
   position: fixed;
   inset: 0;
@@ -76,30 +75,11 @@ a {
     linear-gradient(180deg, rgba(8,12,17,0.18), rgba(8,12,17,0.38));
 }
 
-.bg-layer::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  opacity: 0.035;
-  background-image:
-    radial-gradient(circle at 20% 20%, #fff 0 1px, transparent 1px),
-    radial-gradient(circle at 80% 30%, #fff 0 1px, transparent 1px),
-    radial-gradient(circle at 50% 70%, #fff 0 1px, transparent 1px);
-  background-size: 180px 180px;
-}
-
-.glow,
-.grid-mask,
-.noise-mask {
-  display: none;
-}
-
 .container {
   width: min(var(--max), calc(100% - 28px));
   margin: 0 auto;
 }
 
-/* HEADER */
 .site-header {
   position: sticky;
   top: 0;
@@ -127,37 +107,28 @@ a {
   z-index: 2;
 }
 
+/* Logo propio, no tipo BMW */
 .brand-mark {
   position: relative;
-  width: 44px;
-  height: 44px;
-  border-radius: 999px;
+  width: 42px;
+  height: 42px;
+  border-radius: 14px;
   border: 1px solid rgba(100, 116, 139, 0.82);
-  background: #020617;
+  background: linear-gradient(180deg, #0c1117, #05080c);
   box-shadow:
     0 0 0 3px rgba(255, 255, 255, 0.02),
     0 8px 24px rgba(0, 0, 0, 0.22);
   flex: 0 0 auto;
+  overflow: hidden;
 }
 
 .brand-core {
   position: absolute;
-  inset: 6px;
-  border-radius: inherit;
-  background: conic-gradient(
-    #dfe7f2 0 25%,
-    #3b82f6 25% 50%,
-    #dfe7f2 50% 75%,
-    #3b82f6 75% 100%
-  );
-}
-
-.brand-mark::after {
-  content: "";
-  position: absolute;
-  inset: 2px;
-  border-radius: inherit;
-  border: 1px solid rgba(255, 255, 255, 0.04);
+  inset: 8px;
+  border-radius: 8px;
+  background:
+    linear-gradient(135deg, transparent 0 34%, var(--cyan) 34% 46%, transparent 46% 54%, var(--indigo) 54% 66%, transparent 66%),
+    linear-gradient(180deg, rgba(255,255,255,0.12), rgba(255,255,255,0));
 }
 
 .brand-text {
@@ -167,8 +138,8 @@ a {
 
 .brand-text strong {
   font-size: 16px;
-  font-weight: 700;
-  letter-spacing: 0.03em;
+  font-weight: 800;
+  letter-spacing: 0.08em;
 }
 
 .brand-text small {
@@ -179,7 +150,7 @@ a {
   text-transform: uppercase;
 }
 
-/* RAYAS DIAGONALES OCUPANDO LA ALTURA DE LA BARRA */
+/* Rayas diagonales altas */
 .stripes {
   position: relative;
   height: 52px;
@@ -204,11 +175,11 @@ a {
 }
 
 .stripes span:nth-child(1) {
-  background: linear-gradient(180deg, #8ae5ff 0%, var(--sky) 55%, #2aa7db 100%);
+  background: linear-gradient(180deg, #8ae5ff 0%, var(--cyan) 55%, #2aa7db 100%);
 }
 
 .stripes span:nth-child(2) {
-  background: linear-gradient(180deg, #406cff 0%, var(--navy) 55%, #132c83 100%);
+  background: linear-gradient(180deg, #6a85ff 0%, var(--indigo) 55%, #2739a8 100%);
 }
 
 .stripes span:nth-child(3) {
@@ -219,7 +190,6 @@ a {
   position: relative;
 }
 
-/* HERO */
 .hero {
   padding: 78px 0 34px;
 }
@@ -241,7 +211,7 @@ a {
   font-size: clamp(54px, 11vw, 112px);
   line-height: 0.92;
   letter-spacing: -0.065em;
-  font-weight: 800;
+  font-weight: 900;
   color: #f5f8fd;
   text-shadow:
     0 10px 30px rgba(0, 0, 0, 0.26),
@@ -285,7 +255,7 @@ a {
 }
 
 .btn-primary {
-  background: linear-gradient(180deg, var(--blue) 0%, var(--blue-deep) 100%);
+  background: linear-gradient(180deg, var(--blue) 0%, #1d4ed8 100%);
   color: #fff;
   box-shadow:
     0 14px 34px rgba(29, 78, 216, 0.26),
@@ -298,7 +268,6 @@ a {
   color: var(--text);
 }
 
-/* PANELS */
 .panel-section {
   padding: 18px 0 28px;
 }
@@ -323,15 +292,6 @@ a {
   position: absolute;
   inset: 0;
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), transparent 28%);
-  pointer-events: none;
-}
-
-.panel::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
   pointer-events: none;
 }
 
@@ -427,15 +387,8 @@ a {
   font-size: 15px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.12);
   padding-bottom: 3px;
-  transition: color 0.2s ease, border-color 0.2s ease;
 }
 
-.contact-links a:hover {
-  color: #fff;
-  border-color: rgba(255, 255, 255, 0.22);
-}
-
-/* FOOTER */
 .site-footer {
   border-top: 1px solid var(--line);
   background: rgba(0, 0, 0, 0.14);
